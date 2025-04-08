@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Developer Copilot - VS Code Extension</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @font-face {
+            font-family: 'LucideIcons';
+            src: url(https://cdn.jsdelivr.net/npm/lucide-static@latest/font/Lucide.ttf) format('truetype');
+        }
+
+        .lucide {
+            font-family: 'LucideIcons';
+            font-size: 1.5rem;
+            /* Adjust icon size as needed */
+            line-height: 1;
+            vertical-align: middle;
+            display: inline-block;
+            /* Ensure icons align well */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Using Inter font */
+        }
+
+        /* Style for code blocks */
+        pre {
+            background-color: #1f2937;
+            /* gray-900 */
+            color: #d1d5db;
+            /* gray-300 */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            /* rounded-lg */
+            overflow-x: auto;
+            font-family: monospace;
+            font-size: 0.875rem;
+            /* text-sm */
+            line-height: 1.25rem;
+        }
+
+        code {
+            font-family: monospace;
+        }
+
+        .prompt {
+            color: #a5b4fc;
+            /* indigo-300 */
+        }
+
+        .command {
+            color: #6ee7b7;
+            /* green-300 */
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <span>
+                <h1 class="text-xl font-semibold text-indigo-600">App Developer Copilot</h1>
+            </span>
+            <a href="https://marketplace.visualstudio.com/items?itemName=sindujaramaraj.app-developer-copilot"
+                target="_blank" rel="noopener noreferrer"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 ease-in-out text-sm">
+                Get Extension
+            </a>
+        </div>
+    </header>
+
+    <section class="bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-20 md:py-32">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-8">
+                <img src="icon.png" alt="App Developer Copilot Icon"
+                    class="w-42 h-42 md:w-40 md:h-40 rounded-full mx-auto object-cover"
+                    onerror="this.onerror=null; this.src='https://placehold.co/160x160/e0e7ff/4f46e5?text=Icon';">
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Generate Full Stack Apps with AI</h2>
+            <p class="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
+                Use your existing Copilot subscription or bring your own API key (BYOK) to generate complete web and
+                mobile applications directly within VS Code. Works best with Claude 3.5 and GPT-4o.
+            </p>
+            <a href="https://marketplace.visualstudio.com/items?itemName=sindujaramaraj.app-developer-copilot"
+                target="_blank" rel="noopener noreferrer"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 ease-in-out text-lg shadow-md hover:shadow-lg">
+                Install from Marketplace
+            </a>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h3 class="text-3xl font-semibold text-center text-gray-800 mb-12">Core Features</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div
+                    class="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 flex items-start space-x-4">
+                    <div class="mt-1 text-3xl text-indigo-500 flex-shrink-0">
+                        <img class="lucide" src="https://unpkg.com/lucide-static@latest/icons/smartphone.svg" />
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-1">Mobile Apps</h4>
+                        <p class="text-gray-600">Create native mobile apps using React Native and Expo.</p>
+                    </div>
+                </div>
+                <div
+                    class="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 flex items-start space-x-4">
+                    <div class="mt-1 text-3xl text-indigo-500 flex-shrink-0">
+                        <img class="lucide" src="https://unpkg.com/lucide-static@latest/icons/laptop.svg" />
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-1">Web Apps</h4>
+                        <p class="text-gray-600">Generate modern web apps with React and Next.js.</p>
+                    </div>
+                </div>
+                <div
+                    class="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 flex items-start space-x-4">
+                    <div class="mt-1 text-3xl text-indigo-500 flex-shrink-0">
+                        <img class="lucide" src="https://unpkg.com/lucide-static@latest/icons/database.svg" />
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-1">Supabase Ready</h4>
+                        <p class="text-gray-600">Optionally connect to Supabase for backend storage and authentication.
+                        </p>
+                    </div>
+                </div>
+                <div
+                    class="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 flex items-start space-x-4">
+                    <div class="mt-1 text-3xl text-indigo-500 flex-shrink-0">
+                        <img class="lucide" src="https://unpkg.com/lucide-static@latest/icons/component.svg" />
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-1">Architecture Design</h4>
+                        <p class="text-gray-600">Generates application architecture diagrams and component designs.</p>
+                    </div>
+                </div>
+                <div
+                    class="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 flex items-start space-x-4">
+                    <div class="mt-1 text-3xl text-indigo-500 flex-shrink-0">
+                        <img class="lucide" src="https://unpkg.com/lucide-static@latest/icons/code.svg" />
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-1">TypeScript Code</h4>
+                        <p class="text-gray-600">Automatically generates TypeScript code for your components.</p>
+                    </div>
+                </div>
+                <div
+                    class="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 flex items-start space-x-4">
+                    <div class="mt-1 text-3xl text-indigo-500 flex-shrink-0">
+                        <img class="lucide" src="https://unpkg.com/lucide-static@latest/icons/workflow.svg" />
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-1">Automated Setup</h4>
+                        <p class="text-gray-600">Handles project creation, dependency management, and tech stack
+                            configuration.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h3 class="text-3xl font-semibold text-center text-gray-800 mb-12">How to Use</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h4 class="text-xl font-semibold mb-4 text-indigo-600">1. Using Copilot Chat</h4>
+                    <ol class="list-decimal list-inside space-y-2 text-gray-700 mb-4">
+                        <li>Open the Copilot chat window.</li>
+                        <li>Select your preferred model (Claude 3.5 or GPT-4o recommended).</li>
+                        <li>Start a chat with <code
+                                class="text-sm bg-gray-200 px-1 rounded">@app-developer-mobile</code> or <code
+                                class="text-sm bg-gray-200 px-1 rounded">@app-developer-web</code>.</li>
+                        <li>Use the <code class="text-sm bg-gray-200 px-1 rounded">/create</code> command followed by
+                            your app description.</li>
+                        <li>Use <code class="text-sm bg-gray-200 px-1 rounded">/run</code> to execute the generated app.
+                        </li>
+                    </ol>
+                    <h5 class="font-semibold mb-2">Sample Prompts:</h5>
+                    <pre><code class="language-bash"><span class="prompt">@app-developer-mobile</span> <span class="command">/create</span> A simple notes app
+<span class="prompt">@app-developer-web</span> <span class="command">/create</span> twitter clone
+<span class="prompt">@app-developer-mobile</span> <span class="command">/create</span> flappy bird game</code></pre>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h4 class="text-xl font-semibold mb-4 text-indigo-600">2. Using Your Own Key (BYOK)</h4>
+                    <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                        <li>Go to VS Code Extension Settings for App Developer Copilot.</li>
+                        <li>Check "Use your own model".</li>
+                        <li>Select API provider, model, and enter your API key.</li>
+                        <li>Open the Command Palette (<code class="text-sm bg-gray-200 px-1 rounded">Ctrl+Shift+P</code>
+                            / <code class="text-sm bg-gray-200 px-1 rounded">Cmd+Shift+P</code>).</li>
+                        <li>Select `App Developer: Create a mobile app` or `App Developer: Create a web app`.</li>
+                        <li>Enter your prompt for the application.</li>
+                        <li>Monitor the status bar and output console for progress.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-3xl font-semibold text-gray-800 mb-6">Requirements</h3>
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
+                <div class="flex items-center space-x-2 text-lg text-gray-700">
+                    <img class="lucide" src="https://unpkg.com/lucide-static@latest/icons/hexagon.svg" /> <span>Node.js
+                        v16.0.0 or higher</span>
+                </div>
+                <div class="flex items-center space-x-2 text-lg text-gray-700">
+                    <span class="lucide text-2xl text-blue-600">&#xea11;</span> <span>VS Code 1.95.0 or higher</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-3xl font-semibold text-gray-800 mb-6">Support & Troubleshooting</h3>
+            <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+                While the extension aims for perfection, you might encounter minor issues (e.g., TypeScript errors,
+                missing dependencies) after generation. Check the terminal output for error messages. For common
+                problems, refer to the troubleshooting guide.
+            </p>
+            <a href="https://github.com/sindujaramaraj/app-developer-copilot/issues" target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center space-x-2 bg-gray-800 hover:bg-gray-700 text-white font-medium py-2 px-5 rounded-lg transition duration-300 ease-in-out text-base shadow hover:shadow-md">
+                <img class="lucide" src="https://unpkg.com/lucide-static@latest/icons/github.svg" /> <span>Report Issues
+                    or Suggest Features on GitHub</span>
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-gray-400 py-8">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <p>&copy; 2025 App Developer Copilot. All rights reserved.</p>
+            <p class="mt-2 space-x-4">
+                <a href="https://marketplace.visualstudio.com/items?itemName=sindujaramaraj.app-developer-copilot"
+                    target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition duration-300">View
+                    on Marketplace</a>
+                <a href="https://github.com/sindujaramaraj/app-developer-copilot" target="_blank"
+                    rel="noopener noreferrer" class="hover:text-indigo-400 transition duration-300">GitHub
+                    Repository</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
